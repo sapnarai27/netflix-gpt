@@ -1,14 +1,12 @@
-import React from 'react';
+import React from "react";
+import Body from "./components/Body";
 
 function App() {
-
   return (
     <>
-      <div className="font-bold text-xl text-green-400">
-        Hello World
-       </div>
+      <Body />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
