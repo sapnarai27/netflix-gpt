@@ -1,17 +1,43 @@
-import React from "react";
-import Login from "./Login";
+import React, { useEffect } from "react";
 import Header from "./Header";
+import { Outlet } from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { addUser, removeUser } from "../store/userSlice";
 
 const Body = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // onAuthStateChanged api will automatically called whenever the user sign in, 
+    // sign out or sign up or whenevr authentication states changed.
+    // I don't need to write this logic again and again in other components it will be updated from here only
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          const { uid, email, displayName, photoURL } = user;
+          dispatch(
+            addUser({
+              uid: uid,
+              email: email,
+              displayName: displayName,
+              photoURL: photoURL,
+            })
+          );
+          navigate("/browse");
+        } else {
+          dispatch(removeUser());
+           navigate("/");
+        }
+      });
+  }, []);
+
   return (
     <div>
-      <img
-        className="absolute opacity-90 h-screen w-screen"
-        alt="body"
-        src="https://assets.nflxext.com/ffe/siteui/vlv3/fa4630b1-ca1e-4788-94a9-eccef9f7af86/web/IN-en-20250407-TRIFECTA-perspective_43f6a235-9f3d-47ef-87e0-46185ab6a7e0_small.jpg"
-      />
       <Header />
-      <Login />
+      <Outlet />
     </div>
   );
 };
