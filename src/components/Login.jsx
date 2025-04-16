@@ -8,6 +8,7 @@ import {
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import {addUser} from '../store/userSlice';
+import { LOGIN_BACKGROUND, PHOTO_AVTAR } from "../utils/constant";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -38,7 +39,7 @@ const Login = () => {
           // Signed up
           const user = userCredential.user;
           updateProfile(user, {
-            displayName: name.current.value, photoURL: "https://avatars.githubusercontent.com/u/38311415?s=400&u=5dac629bd6168d0fd2fa43e95d0769957863ded5&v=4"
+            displayName: name.current.value, photoURL: PHOTO_AVTAR
           }).then(() => {
             const { uid, email, displayName, photoURL } = auth.currentUser;
             // this dispatch is happening in Body.js automatically when onAuthStateChanged api is getting called after successfull sign up 
@@ -85,13 +86,14 @@ const Login = () => {
   return (
     <div>
       <img
-        className="absolute opacity-90 h-screen w-screen"
+        className="absolute top-0 opacity-90 h-screen w-screen"
         alt="body"
-        src="https://assets.nflxext.com/ffe/siteui/vlv3/fa4630b1-ca1e-4788-94a9-eccef9f7af86/web/IN-en-20250407-TRIFECTA-perspective_43f6a235-9f3d-47ef-87e0-46185ab6a7e0_small.jpg"
+        src={LOGIN_BACKGROUND}
       />
+      <div className="flex items-center justify-center">
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="absolute p-12 mx-auto my-36 right-0 left-0 border border-black w-3/12 bg-black opacity-90 text-white rounded-sm">
+        className="p-12 mt-20 border-black w-3/12 bg-black opacity-90 text-white rounded-sm">
         <div className="text-3xl font-bold mb-4">
           {isSignIn ? "Sign In" : "Sign Up"}
         </div>
@@ -134,6 +136,7 @@ const Login = () => {
             : "Already signed up? Sign in now."}
         </div>
       </form>
+      </div>
     </div>
   );
 };
