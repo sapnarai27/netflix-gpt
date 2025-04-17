@@ -10,12 +10,8 @@ const Header = () => {
   const navigate = useNavigate();
 
   const handleSignOut = () => {
-    console.log("sign out called")
     signOut(auth)
-      .then(() => {
-        console.log("sign out called then")
-
-      })
+      .then(() => {})
       .catch((error) => {
         console.warn(error);
         //navigate("/error");

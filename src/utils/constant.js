@@ -7,12 +7,26 @@ export const PHOTO_AVTAR =
 export const LOGIN_BACKGROUND =
   "https://assets.nflxext.com/ffe/siteui/vlv3/fa4630b1-ca1e-4788-94a9-eccef9f7af86/web/IN-en-20250407-TRIFECTA-perspective_43f6a235-9f3d-47ef-87e0-46185ab6a7e0_small.jpg";
 
-export const GET_NOW_PLAYING_MOVIES = 'https://api.themoviedb.org/3/movie/now_playing?page=1';
-
 export const API_OPTIONS = {
-  method: 'GET',
+  method: "GET",
   headers: {
-    accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmZDRkNzFhMGI1ZDJmZGQyYTc3MmM4OTJjZDNjMzZlZSIsIm5iZiI6MTc0NDc2ODU5OS43NjQsInN1YiI6IjY3ZmYwZTU3ODNjNmU1NjdjN2Q5MWZkNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IShzHQrvHDFcc7QEoC5mWfW1kFoJS7vPHDrjaQ142ys'
-  }
+    accept: "application/json",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmZDRkNzFhMGI1ZDJmZGQyYTc3MmM4OTJjZDNjMzZlZSIsIm5iZiI6MTc0NDc2ODU5OS43NjQsInN1YiI6IjY3ZmYwZTU3ODNjNmU1NjdjN2Q5MWZkNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IShzHQrvHDFcc7QEoC5mWfW1kFoJS7vPHDrjaQ142ys",
+  },
 };
+
+export const GET_NOW_PLAYING_MOVIES =
+  "https://api.themoviedb.org/3/movie/now_playing?page=1";
+
+export const GET_UPCOMING_MOVIES =
+  "https://api.themoviedb.org/3/movie/upcoming?page=1";
+
+export const GET_POPULAR_MOVIES =
+  "https://api.themoviedb.org/3/movie/popular?page=1";
+
+export const GET_TOP_RATED_MOVIES =
+  "https://api.themoviedb.org/3/movie/top_rated?page=1";
+
+export const IMG_CDN_URL =
+  "https://image.tmdb.org/t/p/w500";
